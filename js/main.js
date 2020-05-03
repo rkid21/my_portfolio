@@ -1,23 +1,23 @@
 $(document).ready(function () {
-  //   var counter = 0;
-  //   var c = 0;
-  //   var i = setInterval(function () {
-  //     $(".loading-page .counter h1").html(c);
-  //     $(".loading-page").css("width", c + "%");
+    var counter = 0;
+    var c = 0;
+    var i = setInterval(function () {
+      $(".loading-page .counter h1").html(c);
+      $(".loading-page").css("width", c + "%");
 
-  //     counter++;
-  //     c++;
+      counter++;
+      c++;
 
-  //     if (counter == 100) {
-  //       $(".content").fadeIn();
-  //     }
+      if (counter == 100) {
+        $(".content").fadeIn();
+      }
 
-  //     if (counter == 100) {
-  //       clearInterval(i);
+      if (counter == 100) {
+        clearInterval(i);
 
-  //       $(".loading-page").fadeOut();
-  //     }
-  //   }, 30);
+        $(".loading-page").fadeOut();
+      }
+    }, 30);
   AOS.init({
     duration: 500,
   });
