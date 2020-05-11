@@ -18,6 +18,17 @@ $(document).ready(function () {
   //     $(".loading-page").fadeOut();
   //   }
   // }, 30);
+
+  //netlify ajax
+  $("#my-form").submit(function (e) {
+    e.preventDefault();
+
+    var $form = $(this);
+    $.post($form.attr("action"), $form.serialize()).then(function () {
+      alert("Thank you!");
+    });
+  });
+
   // Select all links with hashes
   $('a[href*="#"]')
     // Remove links that don't actually link to anything
