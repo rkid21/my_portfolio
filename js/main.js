@@ -1,23 +1,66 @@
 $(document).ready(function () {
-    // var counter = 0;
-    // var c = 0;
-    // var i = setInterval(function () {
-    //   $(".loading-page .counter h1").html(c);
-    //   $(".loading-page").css("width", c + "%");
+  // var counter = 0;
+  // var c = 0;
+  // var i = setInterval(function () {
+  //   $(".loading-page .counter h1").html(c);
+  //   $(".loading-page").css("width", c + "%");
 
-    //   counter++;
-    //   c++;
+  //   counter++;
+  //   c++;
 
-    //   if (counter == 100) {
-    //     $(".content").fadeIn();
-    //   }
+  //   if (counter == 100) {
+  //     $(".content").fadeIn();
+  //   }
 
-    //   if (counter == 100) {
-    //     clearInterval(i);
+  //   if (counter == 100) {
+  //     clearInterval(i);
 
-    //     $(".loading-page").fadeOut();
-    //   }
-    // }, 30);
+  //     $(".loading-page").fadeOut();
+  //   }
+  // }, 30);
+  // Select all links with hashes
+  $('a[href*="#"]')
+    // Remove links that don't actually link to anything
+    .not('[href="#"]')
+    .not('[href="#0"]')
+    .click(function (event) {
+      // On-page links
+      if (
+        location.pathname.replace(/^\//, "") ==
+          this.pathname.replace(/^\//, "") &&
+        location.hostname == this.hostname
+      ) {
+        // Figure out element to scroll to
+        var target = $(this.hash);
+        target = target.length
+          ? target
+          : $("[name=" + this.hash.slice(1) + "]");
+        // Does a scroll target exist?
+        if (target.length) {
+          // Only prevent default if animation is actually gonna happen
+          event.preventDefault();
+          $("html, body").animate(
+            {
+              scrollTop: target.offset().top,
+            },
+            1000,
+            function () {
+              // Callback after animation
+              // Must change focus!
+              var $target = $(target);
+              $target.focus();
+              if ($target.is(":focus")) {
+                // Checking if the target was focused
+                return false;
+              } else {
+                $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
+                $target.focus(); // Set focus again
+              }
+            }
+          );
+        }
+      }
+    });
   AOS.init({
     duration: 500,
   });
@@ -185,54 +228,3 @@ tl.from(
   },
   "-=1.5"
 );
-
-// const left = document.querySelectorAll(".left");
-// const pic = document.querySelectorAll(".pic");
-// const name = document.querySelectorAll(".name");
-// const right = document.querySelectorAll(".right");
-
-// var tl = gsap.timeline();
-
-// tl.fromTo(right, {
-//     width: "100%"
-// }, {
-//     width: "60%",
-//     x: "0",
-//     duration: 1.8,
-//     ease: Power2.easeInOut,
-
-// })
-
-// tl.fromTo(left, {
-//     x: "-100%"
-// }, {
-//     x: "0",
-//     duration: 1.6,
-//     ease: Power3.easeInOut,
-// }, "-=1.7")
-
-// // tl.from(left, {
-// //     x: "0",
-// //     duration: 1.2,
-// //     ease: Power3.easeInOut,
-
-// // }, "-=1")
-
-// tl.fromTo(".info-wrapper", {
-//     opacity: 0,
-//     x: 30
-// }, {
-//     opacity: 1,
-//     x: 0,
-//     duration: .7,
-//     ease: Power2.easeInOut,
-// })
-
-// tl.fromTo(pic, {
-//     width: "0"
-// }, {
-//     width: "380px",
-
-//     ease: Power2.easeInOut,
-//     duration: 1
-// }, "-=1.2")
