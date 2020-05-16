@@ -414,6 +414,9 @@ footer {
   .section {
     padding: 50px 0px;
   }
+  .project-item img {
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 375px) {

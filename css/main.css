@@ -462,6 +462,10 @@ footer .author {
   .section {
     padding: 50px 0px;
   }
+  .project-item img {
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
 }
 
 @media (max-width: 375px) {
